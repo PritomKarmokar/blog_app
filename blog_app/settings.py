@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 import environ
+# import logging
+
 from pathlib import Path
+
+# logger = logging.getLogger("general")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,3 +142,29 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# LOGGING #
+# LOGGER_ROOT_NAME = env.str("LOGGER_ROOT_NAME", "blog_app")
+LOG_LEVEL = env.str("LOG_LEVEL", "DEBUG")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": LOG_LEVEL,
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+            "propagate": False,
+        },
+    },
+}
+
