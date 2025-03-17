@@ -144,7 +144,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # LOGGING #
-# LOGGER_ROOT_NAME = env.str("LOGGER_ROOT_NAME", "blog_app")
 LOG_LEVEL = env.str("LOG_LEVEL", "DEBUG")
 
 LOGGING = {
