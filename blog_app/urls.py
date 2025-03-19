@@ -3,10 +3,10 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from posts.views import PosttViewSet
+from posts.views import PostViewSet
 
 router = DefaultRouter()
-router.register("", PosttViewSet, basename="posts")
+router.register("", PostViewSet, basename="posts")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
