@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.decorators import api_view, APIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+from rest_framework.viewsets import ViewSet
 
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -210,3 +211,16 @@ class PostRetrieveUpdateDeleteView(GenericAPIView, RetrieveModelMixin, UpdateMod
     
     def delete(self, request: Request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+    
+
+class PosttViewSet(ViewSet):
+    def list(self, request: Request):
+        queryset = Post.objects.all()
+        serializer = PostSerializer(instance=queryset, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+    
+    def retrieve(self, request: Request, pk=None):
+        post = get_object_or_404(Post, pk=pk)
+        serializer = PostSerializer(instance=post)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
