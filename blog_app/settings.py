@@ -147,7 +147,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # LOGGING #
-LOG_LEVEL = env.str("LOG_LEVEL", "DEBUG")
+LOG_LEVEL = env.str("LOG_LEVEL", "INFO")
 
 LOGGING = {
     "version": 1,
